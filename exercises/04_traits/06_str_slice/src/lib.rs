@@ -32,15 +32,15 @@ impl Ticket {
     }
 
     pub fn title(&self) -> &str {
-        &self.title.as_str()
+        &self.title
     }
 
     pub fn description(&self) -> &str {
-        &self.description.as_str()
+        &self.description
     }
 
     pub fn status(&self) -> &str {
-        &self.status.as_str()
+        &self.status
     }
 }
 
