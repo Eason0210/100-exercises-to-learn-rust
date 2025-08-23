@@ -10,10 +10,8 @@ pub struct WrappingU32 {
 
 impl Add for WrappingU32 {
     type Output = Self;
-    fn add(self, rhs: Self) -> Self::Output{
-        Self{
-            value: self.value + rhs.value
-        }
+    fn add(self, rhs: Self) -> Self::Output {
+        Self::new(self.value.wrapping_add(rhs.value))
     }
 }
 
