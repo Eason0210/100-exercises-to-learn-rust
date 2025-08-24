@@ -7,7 +7,7 @@ struct DropBomb {
 
 impl DropBomb {
     fn new() -> Self {
-        Self { defused: false }
+        DropBomb { defused: false }
     }
 
     fn defuse(&mut self) {
@@ -18,7 +18,7 @@ impl DropBomb {
 impl Drop for DropBomb {
     fn drop(&mut self) {
         if !self.defused {
-            panic!()
+            panic!("Boom!")
         }
     }
 }
