@@ -6,13 +6,10 @@ fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
     match ticket {
         Ok(t) => t,
         Err(e) => {
-            // TODO: use e.contains instead
-            if e == "Title cannot be empty" {
-                panic!("{}", e);
-            } else if e == "Title cannot be longer than 50 bytes" {
-                panic!("{}", e);
-            } else {
+            if e.contains("Description") {
                 Ticket::new(title, "Description not provided".into(), status).unwrap()
+            } else {
+                panic!("{}", e);
             }
         }
     }
