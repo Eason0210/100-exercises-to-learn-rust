@@ -2,7 +2,7 @@
 //   Each variant should contain a string with the explanation of what went wrong exactly.
 //   You'll have to update the implementation of `Ticket::new` as well.
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug)]
 enum TicketNewError {
     TitleError(String),
     DescriptionError(String),
@@ -16,12 +16,10 @@ fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
     let ticket = Ticket::new(title.clone(), description, status.clone());
     match ticket {
         Ok(t) => t,
-        Err(e) => match e {
-            TicketNewError::TitleError(message) => panic!("{message}"),
-            TicketNewError::DescriptionError(_) => {
-                Ticket::new(title, "Description not provided".to_string(), status).unwrap()
-            }
-        },
+        Err(TicketNewError::DescriptionError(_)) => {
+            Ticket::new(title, "Description not provided".to_string(), status).unwrap()
+        }
+        Err(TicketNewError::TitleError(message)) => panic!("{message}"),
     }
 }
 
