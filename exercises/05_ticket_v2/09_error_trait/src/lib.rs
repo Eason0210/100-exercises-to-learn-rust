@@ -28,7 +28,7 @@ fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
     match Ticket::new(title.clone(), description, status.clone()) {
         Ok(ticket) => ticket,
         Err(error) => match error {
-            TicketNewError::TitleError(msg) => panic!("{}", msg),
+            TicketNewError::TitleError(_) => panic!("{}", error),
             TicketNewError::DescriptionError(_) => {
                 Ticket::new(title, "Description not provided".to_string(), status).unwrap()
             }
