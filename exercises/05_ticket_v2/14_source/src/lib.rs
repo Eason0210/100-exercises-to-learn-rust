@@ -50,7 +50,8 @@ impl Ticket {
         }
 
         // TODO: Parse the status string into a `Status` enum.
-        let status = status.try_into()?;
+        // let status = status.try_into()?;
+        let status = Status::try_from(status)?;
         Ok(Ticket {
             title,
             description,
